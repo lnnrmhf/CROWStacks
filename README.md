@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="media/CROWStacks_Background.png" width="500" title="CROWStacks logo">
+  <img src="media/CROWStacks_Light.png" width="300" title="CROWStacks logo">
 </p>
 
 <p align="center">
