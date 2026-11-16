@@ -19,5 +19,8 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "ipykernel>=7.4.0",
+    "myst-nb>=1.4.0",
+    "shibuya>=2026.7.12",
     "sphinx>=9.1.1",
 ]
