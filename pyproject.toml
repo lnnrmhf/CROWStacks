@@ -1,7 +1,7 @@
 [project]
 name = "crowstacks"
 version = "0.1.0"
-description = "Add your description here"
+description = "A field stacking toolkit for cosmological surveys"
 readme = "README.md"
 authors = [
     { name = "Lena Einramhof", email = "lena.einramhof@gmail.com" }

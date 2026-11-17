@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="violet" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API reference - crowstacks 0.1.0 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="&lt;no title&gt;" href="example.html" /><link rel="prev" title="CROWStacks" href="index.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API reference - crowstacks 0.1.0 documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Function 1" href="example.html" /><link rel="prev" title="CROWStacks" href="index.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
     <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +59,7 @@ data-aria-dark="Switch to auto color mode">
         <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Function 1</a></li>
 </ul>
 
         </div>
@@ -70,7 +71,11 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#crowstacks.load_cartesian_catalog"><code class="docutils literal notranslate"><span class="pre">load_cartesian_catalog()</span></code></a></li>
+<li><a class="reference internal" href="#crowstacks.load_sky_catalog"><code class="docutils literal notranslate"><span class="pre">load_sky_catalog()</span></code></a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -101,6 +106,125 @@ data-aria-dark="Switch to auto color mode">
   <article class="yue" role="main">
           <section id="module-crowstacks">
 <span id="api-reference"></span><h1>API reference<a class="headerlink" href="#module-crowstacks" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="crowstacks.load_cartesian_catalog">
+<span class="sig-prename descclassname"><span class="pre">crowstacks.</span></span><span class="sig-name descname"><span class="pre">load_cartesian_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pos'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#crowstacks.load_cartesian_catalog" title="Link to this definition">#</a></dt>
+<dd><p>Load a galaxy catalog with Cartesian positions from an npz file.</p>
+<p>Reads an npz file and returns galaxy positions as a numpy
+array of shape (N, 3). Positions are assumed to be comoving
+coordinates in units of Mpc/h. Additional arrays (e.g. velocities,
+masses) can be requested by key and are returned in a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> or </em><em>Path</em>) – Path to the npz file.</p></li>
+<li><p><strong>pos_key</strong> (<em>str</em>) – Key for the position array in the npz file.
+The array must have shape (N, 3). Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;pos&quot;</span></code>.</p></li>
+<li><p><strong>extra_keys</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Keys of additional arrays
+to return, e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;vel&quot;,</span> <span class="pre">&quot;mass&quot;]</span></code>. Keys must match
+exactly. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A tuple <code class="docutils literal notranslate"><span class="pre">(pos,</span> <span class="pre">extras)</span></code> where</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>pos</strong> (<em>np.ndarray, shape (N, 3)</em>) – Comoving Cartesian
+positions in Mpc/h.</p></li>
+<li><p><strong>extras</strong> (<em>dict</em>) – Dictionary of additional arrays
+keyed by their npz key. Empty if <code class="docutils literal notranslate"><span class="pre">extra_keys</span></code> is None.</p></li>
+</ul>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>KeyError</strong> – If <code class="docutils literal notranslate"><span class="pre">pos_key</span></code> or any key in <code class="docutils literal notranslate"><span class="pre">extra_keys</span></code> is not
+    found in the npz file. The error message lists all available
+    keys.</p></li>
+<li><p><strong>ValueError</strong> – If the position array does not have shape (N, 3).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Load positions only:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">pos</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_cartesian_catalog</span><span class="p">(</span><span class="s2">"catalog.npz"</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Load positions and line-of-sight velocities:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">pos</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="n">load_cartesian_catalog</span><span class="p">(</span>
+</span><span data-line="2"><span class="gp">... </span>    <span class="s2">"catalog.npz"</span><span class="p">,</span>
+</span><span data-line="3"><span class="gp">... </span>    <span class="n">pos_key</span><span class="o">=</span><span class="s2">"pos_g"</span><span class="p">,</span>
+</span><span data-line="4"><span class="gp">... </span>    <span class="n">extra_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"v_los"</span><span class="p">]</span>
+</span><span data-line="5"><span class="gp">... </span><span class="p">)</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="n">v_los</span> <span class="o">=</span> <span class="n">extras</span><span class="p">[</span><span class="s2">"v_los"</span><span class="p">]</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="crowstacks.load_sky_catalog">
+<span class="sig-prename descclassname"><span class="pre">crowstacks.</span></span><span class="sig-name descname"><span class="pre">load_sky_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEC'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#crowstacks.load_sky_catalog" title="Link to this definition">#</a></dt>
+<dd><p>Load a galaxy catalog with sky coordinates from a FITS file.</p>
+<p>Reads a FITS table and returns sky positions as numpy arrays.
+Additional columns (e.g. redshift, velocity, mass) can be requested
+by name and are returned in a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> or </em><em>Path</em>) – Path to the FITS file.</p></li>
+<li><p><strong>ra_col</strong> (<em>str</em>) – Name of the right ascension column. Must be in
+degrees. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;RA&quot;</span></code>.</p></li>
+<li><p><strong>dec_col</strong> (<em>str</em>) – Name of the declination column. Must be in
+degrees. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;DEC&quot;</span></code>.</p></li>
+<li><p><strong>extra_cols</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Names of additional columns
+to return, e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;Z&quot;,</span> <span class="pre">&quot;MASS&quot;]</span></code>. Column names must match
+exactly. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A tuple <code class="docutils literal notranslate"><span class="pre">(ra,</span> <span class="pre">dec,</span> <span class="pre">extras)</span></code> where</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>ra</strong> (<em>np.ndarray, shape (N,)</em>) – Right ascension in
+degrees.</p></li>
+<li><p><strong>dec</strong> (<em>np.ndarray, shape (N,)</em>) – Declination in
+degrees.</p></li>
+<li><p><strong>extras</strong> (<em>dict</em>) – Dictionary of additional columns
+keyed by column name. Empty if <code class="docutils literal notranslate"><span class="pre">extra_cols</span></code> is None.</p></li>
+</ul>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <code class="docutils literal notranslate"><span class="pre">ra_col</span></code>, <code class="docutils literal notranslate"><span class="pre">dec_col</span></code>, or any column in
+    <code class="docutils literal notranslate"><span class="pre">extra_cols</span></code> is not found in the file. The error message
+    lists all available column names.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Load positions only:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_sky_catalog</span><span class="p">(</span><span class="s2">"catalog.fits"</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Load positions and redshift:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="n">load_sky_catalog</span><span class="p">(</span>
+</span><span data-line="2"><span class="gp">... </span>    <span class="s2">"catalog.fits"</span><span class="p">,</span>
+</span><span data-line="3"><span class="gp">... </span>    <span class="n">ra_col</span><span class="o">=</span><span class="s2">"RA"</span><span class="p">,</span>
+</span><span data-line="4"><span class="gp">... </span>    <span class="n">dec_col</span><span class="o">=</span><span class="s2">"DEC"</span><span class="p">,</span>
+</span><span data-line="5"><span class="gp">... </span>    <span class="n">extra_cols</span><span class="o">=</span><span class="p">[</span><span class="s2">"Z"</span><span class="p">]</span>
+</span><span data-line="6"><span class="gp">... </span><span class="p">)</span>
+</span><span data-line="7"><span class="gp">&gt;&gt;&gt; </span><span class="n">redshift</span> <span class="o">=</span> <span class="n">extras</span><span class="p">[</span><span class="s2">"Z"</span><span class="p">]</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -118,7 +242,7 @@ data-aria-dark="Switch to auto color mode">
     <a href="example.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">&lt;no title&gt;</div>
+        <div class="title">Function 1</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

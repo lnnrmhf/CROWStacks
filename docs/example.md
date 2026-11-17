@@ -5,7 +5,7 @@ kernelspec:
   language: python
 ---
 
-# Function 1
+# Specific example for function
 
 ```{code-cell} ipython3
 print("Hello")
